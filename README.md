@@ -1,5 +1,11 @@
 # ARCHITECTURE:
+## Cloud Architecture
+
 ![alt text](Cloud_Architecture.jpg)
+
+## CICD pipeline
+
+![alt text](<DevOps Architecture.jpg>)
 
 ## PREREQUISITES:
 ## Install Azure CLI:
