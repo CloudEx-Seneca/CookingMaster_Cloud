@@ -48,6 +48,7 @@ resource "azurerm_container_app" "frontend" {
       #backend-url
       env {
         name  = "REACT_APP_API_URL"
+        #value = "https://cookingmaster-api-gw.azure-api.net"
         value = "https://${data.terraform_remote_state.backend.outputs.backend_url}"
       }
     }
