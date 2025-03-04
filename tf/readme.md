@@ -1,3 +1,19 @@
+## Architecture
+![alt text](Front-Back-DB-Arc.jpg)
+
+Components:
+- Azure container apps: frontend, backend-db, backend
+    + Pros: 
+        ++ cost effective, charges incurred per request
+        ++ Auto scaling
+    + Cons: azure lock-in
+- Azure API Management: connect frontend to backend, support authentication and security
+    + Pros: 
+        ++ Cost optimize, charges incurred per request.
+        ++ Provides a single entry point for all APIs, making it easier to manage, secure, and monitor API traffic.
+        ++ Scalability
+    + Cons: higher tier could be expensive
+
 ## config.tf && providers.tf
 
 1.Configure storageaccount in config.tf to your storageaccount
