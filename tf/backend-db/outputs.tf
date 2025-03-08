@@ -2,6 +2,10 @@ output "backend_db_url" {
   value = azurerm_container_app.backend_db.ingress[0].fqdn
 }
 
+output "recipe_db_url" {
+  value = azurerm_container_app.recipe-db.ingress[0].fqdn
+}
+
 output "container_app_env_id" {
   value = azurerm_container_app_environment.cookingmaster_env.id
 }

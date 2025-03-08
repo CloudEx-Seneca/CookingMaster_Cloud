@@ -51,6 +51,12 @@ resource "azurerm_container_app" "frontend" {
         #value = "https://cookingmaster-api-gw.azure-api.net"
         value = "https://${data.terraform_remote_state.backend.outputs.backend_url}"
       }
+      #recipe-url
+      env {
+        name  = "REACT_APP_RECIPE_API_URL"
+        #value = "https://cookingmaster-api-gw.azure-api.net"
+        value = "https://${data.terraform_remote_state.backend.outputs.recipe_url}"
+      }
     }
   }
   ingress {

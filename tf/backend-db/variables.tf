@@ -39,6 +39,11 @@ variable "db_image" {
   description = "Docker image for backend db"
 }
 
+variable "recipe_db_image" {
+  default     = "henry071190/recipe-db"
+  description = "Docker image for recipe db"
+}
+
 variable "DOCKER_REGISTRY_USERNAME" {
   description = "The Docker registry username"
   type        = string
