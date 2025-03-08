@@ -39,6 +39,10 @@ variable "backend_image" {
   description = "Docker image for backend"
 }
 
+variable "recipe_image" {
+  default     = "henry071190/recipe"
+  description = "Docker image for recipe"
+}
 
 # variable "dns_name_label" {
 #   default = "cookingmaster-app"

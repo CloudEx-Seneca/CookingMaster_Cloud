@@ -69,9 +69,56 @@ resource "azurerm_container_app" "backend_db" {
   }
   ingress {
     #allow_insecure_connections = true
-    external_enabled           = false
-    target_port                = 3306
-    transport                  = "tcp"
+    external_enabled = false
+    target_port      = 3306
+    transport        = "tcp"
+    traffic_weight {
+      latest_revision = true
+      percentage      = 100
+    }
+  }
+}
+
+# Create recipe db container
+# Create backend-db
+resource "azurerm_container_app" "recipe-db" {
+  name                         = "recipe-db"
+  container_app_environment_id = azurerm_container_app_environment.cookingmaster_env.id
+  resource_group_name          = var.resource_group_name
+  revision_mode                = "Single" # Change if needed
+
+  template {
+    container {
+      name   = "recipe-db"
+      image  = var.recipe_db_image
+      cpu    = 0.5
+      memory = "1Gi"
+
+      # Registry authentication
+      env {
+        name  = "DOCKER_REGISTRY_SERVER"
+        value = "index.docker.io"
+      }
+      env {
+        name  = "DOCKER_REGISTRY_USERNAME"
+        value = var.DOCKER_REGISTRY_USERNAME
+      }
+      env {
+        name  = "DOCKER_REGISTRY_PASSWORD"
+        value = var.DOCKER_REGISTRY_PASSWORD
+      }
+      # Database credentials
+      env {
+        name  = "MYSQL_ROOT_PASSWORD"
+        value = var.MYSQL_ROOT_PASSWORD
+      }
+    }
+  }
+  ingress {
+    #allow_insecure_connections = true
+    external_enabled = false
+    target_port      = 3306
+    transport        = "tcp"
     traffic_weight {
       latest_revision = true
       percentage      = 100
