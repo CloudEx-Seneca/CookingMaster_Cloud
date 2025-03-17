@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config          # Name of the ConfigMap
+  namespace: default        # Optional: Specify the namespace if not using "default"
+data:
+  USERCENTER_DBHOST: "usercenter-db-svc"   # Replace with your database host
+  RECIPE_DBHOST: "recipe-db-svc"   # Replace with your database host
+  REACT_APP_API_URL: "http://usercenter-svc:8080"  # Replace with your API URL
+  REACT_APP_RECIPE_API_URL: "http://recipe-svc:8081"  # Replace with your Recipe API URL

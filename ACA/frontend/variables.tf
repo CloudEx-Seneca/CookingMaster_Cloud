@@ -35,7 +35,7 @@ variable "restart_policy" {
 }
 
 variable "frontend_image" {
-  default     = "henry071190/frontend"
+  default     = "henry071190/frontend:8"
   description = "Docker image for frontend"
 }
 

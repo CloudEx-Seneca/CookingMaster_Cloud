@@ -35,7 +35,7 @@ variable "restart_policy" {
 }
 
 variable "backend_image" {
-  default     = "henry071190/backend:onprem"
+  default     = "henry071190/backend"
   description = "Docker image for backend"
 }
 

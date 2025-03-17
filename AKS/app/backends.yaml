@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usercenter
+  labels:
+    tier: backend
+    app: usercenter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: backend
+  template:
+    metadata:
+      labels:
+        tier: backend
+    spec:
+      containers:
+      - name: backend
+        image: henry071190/usercenter
+        ports:
+        - containerPort: 8080
+        env:
+          - name: DBHOST
+            valueFrom:
+              configMapKeyRef:
+                name: app-config      # Name of the ConfigMap
+                key: USERCENTER_DBHOST  
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-root-password  # Name of the Secret
+                key: MYSQL_ROOT_PASSWORD   # Key in the Secret
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipe
+  labels:
+    tier: backend
+    app: recipe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: backend
+  template:
+    metadata:
+      labels:
+        tier: backend
+    spec:
+      containers:
+      - name: recipe
+        image: henry071190/recipe
+        ports:
+        - containerPort: 8081
+        env:
+          - name: DBHOST
+            valueFrom:
+              configMapKeyRef:
+                name: app-config      # Name of the ConfigMap
+                key: RECIPE_DBHOST  
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-root-password  # Name of the Secret
+                key: MYSQL_ROOT_PASSWORD   # Key in the Secret

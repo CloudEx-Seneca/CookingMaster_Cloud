@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    tier: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: frontend
+  template:
+    metadata:
+      labels:
+        tier: frontend
+    spec:
+      containers:
+      - name: frontend
+        image: henry071190/frontend:8
+        ports:
+        - containerPort: 3000
+        env:
+          - name: REACT_APP_API_URL
+            valueFrom:
+              configMapKeyRef:
+                name: app-config      # Name of the ConfigMap
+                key: REACT_APP_API_URL  
+          - name: REACT_APP_RECIPE_API_URL
+            valueFrom:
+              configMapKeyRef:
+                name: app-config      # Name of the ConfigMap
+                key: REACT_APP_RECIPE_API_URL  
