@@ -41,6 +41,29 @@ terraform apply --auto-approve
 # Deploy apps to AKS Cluster
 Update variables in configmap.yaml and secrets.yaml to meet your requirements
 
+## Deploy secrets, configmap, services
+
 ```
-kubectl apply -f .
+kubectl apply -f secrets.yaml
+kubectl apply -f configmap.yaml
+kubectl apply -f services.yaml
 ```
+
+## Deploy DBs
+
+```
+kubectl apply -f dbs.yaml
+```
+
+## Deploy backends
+
+```
+kubectl apply -f backends.yaml
+```
+
+## Deploy backends
+
+```
+kubectl apply -f frontend.yaml
+```
+
