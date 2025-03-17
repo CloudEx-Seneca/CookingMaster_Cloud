@@ -17,11 +17,11 @@ spec:
     spec:
       containers:
       - name: backend
-        image: henry071190/usercenter
+        image: henry071190/usercenter:newapp
         ports:
         - containerPort: 8080
         env:
-          - name: DBHOST
+          - name: DB_HOST
             valueFrom:
               configMapKeyRef:
                 name: app-config      # Name of the ConfigMap
@@ -31,6 +31,11 @@ spec:
               secretKeyRef:
                 name: mysql-root-password  # Name of the Secret
                 key: MYSQL_ROOT_PASSWORD   # Key in the Secret
+          - name: SERVER_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: app-config      # Name of the ConfigMap
+                key: USERCENTER_PORT
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -51,11 +56,11 @@ spec:
     spec:
       containers:
       - name: recipe
-        image: henry071190/recipe
+        image: henry071190/recipe:newapp
         ports:
         - containerPort: 8081
         env:
-          - name: DBHOST
+          - name: DB_HOST
             valueFrom:
               configMapKeyRef:
                 name: app-config      # Name of the ConfigMap
@@ -65,3 +70,8 @@ spec:
               secretKeyRef:
                 name: mysql-root-password  # Name of the Secret
                 key: MYSQL_ROOT_PASSWORD   # Key in the Secret
+          - name: SERVER_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: app-config      # Name of the ConfigMap
+                key: RECIPE_PORT  
