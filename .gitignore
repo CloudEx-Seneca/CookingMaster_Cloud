@@ -1,2 +1,4 @@
 .terraform*
 .key
+.pub
+aks_key

@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: usercenter-db
+  labels:
+    tier: backend
+    app: usercenter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: usercenter
+  template:
+    metadata:
+      labels:
+        app: usercenter
+    spec:
+      containers:
+      - name: usercenter-db
+        image: henry071190/backend_db
+        ports:
+        - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-root-password  # Name of the Secret
+                key: MYSQL_ROOT_PASSWORD   # Key in the Secret
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: recipe-db
+  labels:
+    tier: backend
+    app: recipe
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: recipe
+  template:
+    metadata:
+      labels:
+        app: recipe
+    spec:
+      containers:
+      - name: recipe-db
+        image: henry071190/recipe-db
+        ports:
+        - containerPort: 3306
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-root-password  # Name of the Secret
+                key: MYSQL_ROOT_PASSWORD   # Key in the Secret
