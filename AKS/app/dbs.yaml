@@ -9,15 +9,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: usercenter
+      app: usercenter-db
   template:
     metadata:
       labels:
-        app: usercenter
+        app: usercenter-db
     spec:
       containers:
       - name: usercenter-db
-        image: henry071190/backend_db
+        image: henry071190/usercenter-db:newapp
         ports:
         - containerPort: 3306
         env:
@@ -39,15 +39,15 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      app: recipe
+      app: recipe-db
   template:
     metadata:
       labels:
-        app: recipe
+        app: recipe-db
     spec:
       containers:
       - name: recipe-db
-        image: henry071190/recipe-db
+        image: henry071190/recipe-db:newapp
         ports:
         - containerPort: 3306
         env:

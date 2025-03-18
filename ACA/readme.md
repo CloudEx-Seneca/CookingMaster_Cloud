@@ -1,6 +1,7 @@
 ## Architecture
 ![alt text](Front-Back-DB-Arc.jpg)
-
+![alt text](Cloud_Architecture.jpg)
+![alt text](<DevOps Architecture.jpg>)
 Components:
 - Azure container apps: frontend, backend-db, backend
     + Pros: 
