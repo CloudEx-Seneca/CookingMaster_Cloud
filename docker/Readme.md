@@ -3,22 +3,19 @@
 ```
 docker network create app_network
 ```
-
-## Running mysql
+## usercenter
 
 ```
 docker run -d --name backend-db --network app_network -e MYSQL_ROOT_PASSWORD=pw  henry071190/backend_db
+docker run -d --name backend --network app_network -p 8888:8888 -e DBHOST=backend-db henry071190/backend
+docker run -d --name frontend --network app_network -p 3000:3000 -e REACT_APP_API_URL="http://localhost:8888" -e REACT_APP_RECIPE_API_URL="http://localhost:8889" henry071190/frontend
 ```
 
-## Running backend
-```
-docker run -d --name backend --network app_network -p 8888:8888 henry071190/backend
-```
-
-## Running frontend
+## recipe
 
 ```
-docker run -d --name frontend --network app_network -p 3000:3000 -e REACT_APP_API_URL="http://backend:8888" henry071190/frontend
+docker run -d --name recipe-db --network app_network -e MYSQL_ROOT_PASSWORD=pw recipe-db
+docker run -d --name recipe --network app_network -p 8889:8889 -e DBHOST=recipe-db recipe
 ```
 
 # [BUILD] Build docker image
