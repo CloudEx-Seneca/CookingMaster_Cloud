@@ -9,11 +9,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      tier: backend
+      app: usercenter
   template:
     metadata:
       labels:
         tier: backend
+        app: usercenter
     spec:
       containers:
       - name: backend
@@ -48,11 +49,12 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      tier: backend
+      app: recipe
   template:
     metadata:
       labels:
         tier: backend
+        app: recipe
     spec:
       containers:
       - name: recipe
