@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: usercenter-db
-        image: henry071190/usercenter-db:newapp
+        image: henry071190/usercenter-db
         ports:
         - containerPort: 3306
         env:
@@ -47,7 +47,7 @@ spec:
     spec:
       containers:
       - name: recipe-db
-        image: henry071190/recipe-db:newapp
+        image: henry071190/recipe-db
         ports:
         - containerPort: 3306
         env:
