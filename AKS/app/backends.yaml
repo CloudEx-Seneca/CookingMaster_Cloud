@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: henry071190/usercenter:newapp
+        image: henry071190/usercenter
         ports:
         - containerPort: 8080
         env:
@@ -58,7 +58,7 @@ spec:
     spec:
       containers:
       - name: recipe
-        image: henry071190/recipe:newapp
+        image: henry071190/recipe
         ports:
         - containerPort: 8081
         env:
