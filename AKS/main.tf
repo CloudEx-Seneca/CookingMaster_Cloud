@@ -8,6 +8,7 @@ resource "azurerm_kubernetes_cluster" "k8s" {
   name                = var.k8s_name
   resource_group_name = var.rg_name
   dns_prefix          = var.dns_prefix
+  depends_on = [ azurerm_resource_group.rg ]
 
   identity {
     type = "SystemAssigned"
