@@ -1,5 +1,7 @@
-.terraform*
-.key
-.pub
-aks_key
-azurek8s
+*.terraform*
+*.tfstate
+*.backup
+*.key
+*.pub
+*aks_key
+*azurek8s
