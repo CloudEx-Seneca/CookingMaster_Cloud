@@ -1,0 +1,33 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: example-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+spec:
+  ingressClassName: nginx
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-svc
+            port:
+              number: 80
+      - path: /usercenter/*
+        pathType: Prefix
+        backend:
+          service:
+            name: usercenter-svc
+            port:
+              number: 8080
+      - path: /recipe/*
+        pathType: Prefix
+        backend:
+          service:
+            name: recipe-svc
+            port:
+              number: 8081

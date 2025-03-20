@@ -67,3 +67,14 @@ kubectl apply -f backends.yaml
 kubectl apply -f frontend.yaml
 ```
 
+## Install NGINX Ingress
+
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/cloud/deploy.yaml
+```
+## Edit configmapp
+Update REACT_APP_RECIPE_API_URL & REACT_APP_API_URL to NGINX ingress public IP
+
+```
+kubectl edit configmap/app-config
+```
