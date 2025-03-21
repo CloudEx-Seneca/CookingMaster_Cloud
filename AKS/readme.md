@@ -74,7 +74,7 @@ $env:LB_IP = $(kubectl get ingress example-ingress -o jsonpath='{.status.loadBal
 kubectl patch configmap/app-config --type merge -p "{\`"data\`":{\`"REACT_APP_API_URL\`":\`"http://$env:LB_IP\`",\`"REACT_APP_RECIPE_API_URL\`":\`"http://$env:LB_IP\`"}}"
 ```
 
-## Deploy Frontend
+## Deploy Frontend.
 
 ```
 kubectl apply -f frontend.yaml
