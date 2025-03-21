@@ -61,12 +61,6 @@ kubectl apply -f dbs.yaml
 kubectl apply -f backends.yaml
 ```
 
-## Deploy backends
-
-```
-kubectl apply -f frontend.yaml
-```
-
 ## Install NGINX Ingress
 
 ```
@@ -76,5 +70,12 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/cont
 Update REACT_APP_RECIPE_API_URL & REACT_APP_API_URL to NGINX ingress public IP
 
 ```
-kubectl edit configmap/app-config
+$env:LB_IP = $(kubectl get ingress example-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
+kubectl patch configmap/app-config --type merge -p "{\`"data\`":{\`"REACT_APP_API_URL\`":\`"http://$env:LB_IP\`",\`"REACT_APP_RECIPE_API_URL\`":\`"http://$env:LB_IP\`"}}"
+```
+
+## Deploy backends
+
+```
+kubectl apply -f frontend.yaml
 ```
