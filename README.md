@@ -1,7 +1,7 @@
 # ARCHITECTURE:
 ## Cloud Architecture
 
-![alt text](<AKS Architecture.jpg>)
+![alt text](<AKS Architecture-2.jpg>)
 
 ## PREREQUISITES:
 ## Install Azure CLI:
@@ -13,4 +13,10 @@ curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
 
 ```
 az login
+```
+
+# Automation deployment
+
+```
+./AKS/deploy.ps1
 ```
