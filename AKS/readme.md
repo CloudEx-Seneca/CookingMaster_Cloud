@@ -1,6 +1,6 @@
 # Architecture
 
-![alt text](<AKS Architecture.jpg>)
+![alt text](<AKS Architecture-1.jpg>)
 
 # Create ssh key
 
