@@ -77,3 +77,43 @@ spec:
               configMapKeyRef:
                 name: app-config      # Name of the ConfigMap
                 key: RECIPE_PORT  
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shopping
+  labels:
+    tier: backend
+    app: shopping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: shopping
+  template:
+    metadata:
+      labels:
+        tier: backend
+        app: shopping
+    spec:
+      containers:
+      - name: shopping
+        image: henry071190/shopping
+        ports:
+        - containerPort: 5000
+        env:
+          - name: DB_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: app-config      # Name of the ConfigMap
+                key: SHOPPING_DBHOST  
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-root-password  # Name of the Secret
+                key: MYSQL_ROOT_PASSWORD   # Key in the Secret
+          - name: SERVER_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: app-config      # Name of the ConfigMap
+                key: SHOPPING_PORT  

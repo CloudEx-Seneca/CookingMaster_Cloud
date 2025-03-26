@@ -36,7 +36,7 @@ Write-Host 'All apps have been deployed!' -ForegroundColor Yellow
 
 # Update LB pip to Configmap
 $env:LB_IP = $(kubectl get ingress example-ingress -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-kubectl patch configmap/app-config --type merge -p "{\`"data\`":{\`"REACT_APP_API_URL\`":\`"http://$env:LB_IP\`",\`"REACT_APP_RECIPE_API_URL\`":\`"http://$env:LB_IP\`"}}"
+kubectl patch configmap/app-config --type merge -p "{\`"data\`":{\`"REACT_APP_API_URL\`":\`"http://$env:LB_IP\`",\`"REACT_APP_RECIPE_API_URL\`":\`"http://$env:LB_IP\`",\`"REACT_APP_SHOPLIST_API_URL\`":\`"http://$env:LB_IP\`"}}"
 Start-Sleep 5
 
 # Deploy frontend

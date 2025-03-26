@@ -7,15 +7,15 @@ docker network create app_network
 # Deploy db
 
 ```
-docker run -d --name usercenter-db --network app_network -e MYSQL_ROOT_PASSWORD=pw  henry071190/usercenter-db:newapp
-docker run -d --name recipe-db --network app_network -e MYSQL_ROOT_PASSWORD=pw henry071190/recipe-db:newapp
+docker run -d --name usercenter-db --network app_network -e MYSQL_ROOT_PASSWORD=pw  henry071190/usercenter-db
+docker run -d --name recipe-db --network app_network -e MYSQL_ROOT_PASSWORD=pw henry071190/recipe-db
 ```
 
 # Deploy apps
 
 ```
-docker run -d --name usercenter --network app_network -p 8080:8080 -e SERVER_PORT=":8080" -e DB_HOST=usercenter-db -e MYSQL_ROOT_PASSWORD=pw henry071190/usercenter:newapp
-docker run -d --name recipe --network app_network -p 8081:8081 -e SERVER_PORT=":8081" -e DB_HOST=recipe-db -e MYSQL_ROOT_PASSWORD=pw henry071190/recipe:newapp
+docker run -d --name usercenter --network app_network -p 8080:8080 -e SERVER_PORT=":8080" -e DB_HOST=usercenter-db -e MYSQL_ROOT_PASSWORD=pw henry071190/usercenter
+docker run -d --name recipe --network app_network -p 8081:8081 -e SERVER_PORT=":8081" -e DB_HOST=recipe-db -e MYSQL_ROOT_PASSWORD=pw henry071190/recipe
 ```
 
 # Deploy Frontend
