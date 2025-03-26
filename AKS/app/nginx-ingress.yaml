@@ -31,3 +31,10 @@ spec:
             name: recipe-svc
             port:
               number: 8081
+      - path: /shoppinglist/*
+        pathType: Prefix
+        backend:
+          service:
+            name: shopping-svc
+            port:
+              number: 5000

@@ -4,9 +4,12 @@ metadata:
   name: app-config          # Name of the ConfigMap
   namespace: default        # Optional: Specify the namespace if not using "default"
 data:
-  USERCENTER_DBHOST: "usercenter-db-svc"   # Replace with your database host
-  RECIPE_DBHOST: "recipe-db-svc"   # Replace with your database host
+  USERCENTER_DBHOST: "usercenter-db-svc"   # Replace with usercenter database host
+  RECIPE_DBHOST: "recipe-db-svc"   # Replace with recipe database host
+  SHOPPING_DBHOST: "shopping-db-svc"   # Replace with shopping database host
   USERCENTER_PORT: ":8080"  # Replace with usercenter port
   RECIPE_PORT: ":8081"  # Replace with recipe port 
+  SHOPPING_PORT: "5000"  # Replace with shopping port
   REACT_APP_API_URL: "http://usercenter-svc:8080"  # Replace with your API URL
   REACT_APP_RECIPE_API_URL: "http://recipe-svc:8081"  # Replace with your Recipe API URL
+  REACT_APP_SHOPLIST_API_URL: "http://shopping-svc:5000"  # Replace with your Shopping List API URL
