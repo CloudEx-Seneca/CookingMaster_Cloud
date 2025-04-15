@@ -31,7 +31,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: mysql-root-password  # Name of the Secret
-                key: MYSQL_ROOT_PASSWORD   # Key in the Secret
+                key: mysql-root-password   # Key in the Secret
           - name: SERVER_PORT
             valueFrom:
               configMapKeyRef:
@@ -71,7 +71,7 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: mysql-root-password  # Name of the Secret
-                key: MYSQL_ROOT_PASSWORD   # Key in the Secret
+                key: mysql-root-password   # Key in the Secret
           - name: SERVER_PORT
             valueFrom:
               configMapKeyRef:
@@ -111,9 +111,10 @@ spec:
             valueFrom:
               secretKeyRef:
                 name: mysql-root-password  # Name of the Secret
-                key: MYSQL_ROOT_PASSWORD   # Key in the Secret
+                key: mysql-root-password   # Key in the Secret
           - name: SERVER_PORT
             valueFrom:
               configMapKeyRef:
                 name: app-config      # Name of the ConfigMap
-                key: SHOPPING_PORT  
+                key: SHOPPING_PORT
+  

@@ -1,0 +1,25 @@
+# This is a SecretProviderClass example using user-assigned identity to access your key vault
+apiVersion: secrets-store.csi.x-k8s.io/v1
+kind: SecretProviderClass
+metadata:
+  name: azure-kvname-user-msi
+spec:
+  provider: azure
+  parameters:
+    usePodIdentity: "false"
+    useVMManagedIdentity: "true"          # Set to true for using managed identity
+    userAssignedIdentityID: 4c7f4c5c-2ad1-4c3a-a2bd-e0e725767767   # Set the clientID of the user-assigned managed identity to use
+    keyvaultName: cookingKeyvault        # Set to the name of your key vault
+    cloudName: ""                         # [OPTIONAL for Azure] if not provided, the Azure environment defaults to AzurePublicCloud
+    objects:  |
+      array:
+        - |
+          objectName: mysql-root-password
+          objectType: secret              # object types: secret, key, or cert
+    tenantId: ed27b597-cea0-4942-8c6f-40e6a78bf47d                 # The tenant ID of the key vault
+  secretObjects:
+    - data:
+        - key: mysql-root-password
+          objectName: mysql-root-password
+      secretName: mysql-root-password
+      type: Opaque  
